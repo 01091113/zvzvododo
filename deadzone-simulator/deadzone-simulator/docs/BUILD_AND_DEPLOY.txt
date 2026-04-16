@@ -1,0 +1,27 @@
+BUILD / DEPLOY
+
+이 프로젝트는 별도 빌드가 필요 없는 정적 프로젝트입니다.
+
+로컬 실행
+1. 압축 해제
+2. index.html 열기
+
+GitHub 업로드 예시
+1. 새 repository 생성
+2. 압축 해제한 파일 전체 업로드
+3. Settings > Pages > Deploy from a branch 활성화
+4. Branch: main / root 선택
+5. 배포 URL 확인
+
+권장 구조
+/deadzone-simulator
+  index.html
+  /css
+  /js
+  /data
+  /docs
+  /sources
+
+추가 팁
+- GitHub Pages에서 한글 인코딩 문제를 막기 위해 UTF-8 유지
+- 정적 앱이므로 외부 라이브러리 의존 없음

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEADZONE / QUARANTINE Simulator</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>DEADZONE / QUARANTINE Simulator</h1>
+      <p class="sub">정적 웹앱 · GitHub Pages 배포 가능</p>
+    </div>
+    <div class="top-actions">
+      <button id="newRunBtn">새 시뮬레이션</button>
+      <button id="exportBtn">세이브 내보내기</button>
+      <button id="importBtn">세이브 불러오기</button>
+      <input id="saveFileInput" type="file" accept="application/json" hidden />
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel sidebar">
+      <h2>시작 설정</h2>
+      <label>시나리오
+        <select id="scenarioSelect"></select>
+      </label>
+      <label>시작 지점
+        <select id="startLocationSelect"></select>
+      </label>
+      <label>플레이어 이름
+        <input id="playerName" type="text" value="원이호" />
+      </label>
+      <label>동행자 이름
+        <input id="companionName" type="text" value="이서금" />
+      </label>
+      <label>아키타입
+        <select id="archetypeSelect"></select>
+      </label>
+      <div class="stat-grid" id="statInputs"></div>
+      <div class="checkbox-row">
+        <label><input type="checkbox" id="enableCompanion" checked /> 동행자 사용</label>
+      </div>
+      <button id="startBtn" class="primary">시작</button>
+
+      <hr />
+
+      <h2>시뮬레이션 상태</h2>
+      <div id="statusBox" class="status-box"></div>
+      <div class="meter-wrap">
+        <div>HP <span id="hpText"></span></div>
+        <progress id="hpMeter" max="10" value="10"></progress>
+      </div>
+      <div class="meter-wrap">
+        <div>SAN <span id="sanText"></span></div>
+        <progress id="sanMeter" max="10" value="10"></progress>
+      </div>
+      <div class="meter-wrap">
+        <div>포만도 <span id="hungerText"></span></div>
+        <progress id="hungerMeter" max="10" value="10"></progress>
+      </div>
+      <div class="meter-wrap">
+        <div>수분 <span id="waterText"></span></div>
+        <progress id="waterMeter" max="10" value="10"></progress>
+      </div>
+      <div class="meter-wrap danger">
+        <div>감염도 <span id="infectionText"></span></div>
+        <progress id="infectionMeter" max="5" value="0"></progress>
+      </div>
+    </section>
+
+    <section class="panel mainpanel">
+      <div class="grid-two">
+        <article>
+          <h2>현재 위치</h2>
+          <div id="locationCard" class="card"></div>
+        </article>
+        <article>
+          <h2>소지품</h2>
+          <div id="inventoryCard" class="card compact"></div>
+        </article>
+      </div>
+
+      <div class="grid-two">
+        <article>
+          <h2>행동</h2>
+          <div id="actionsCard" class="card action-list"></div>
+        </article>
+        <article>
+          <h2>제작 / 처치</h2>
+          <div id="craftCard" class="card action-list"></div>
+        </article>
+      </div>
+
+      <article>
+        <h2>기록</h2>
+        <div id="log" class="log"></div>
+      </article>
+    </section>
+
+    <section class="panel codexpanel">
+      <h2>코덱스</h2>
+      <div class="tabs">
+        <button data-tab="locations" class="tab active">위치</button>
+        <button data-tab="systems" class="tab">시스템</button>
+        <button data-tab="npcs" class="tab">NPC</button>
+        <button data-tab="sources" class="tab">원문</button>
+      </div>
+      <div id="codexContent" class="card codex"></div>
+    </section>
+  </main>
+
+  <script src="data/world.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
